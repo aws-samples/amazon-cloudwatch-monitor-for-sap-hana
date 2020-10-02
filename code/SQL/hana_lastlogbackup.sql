@@ -1,0 +1,1 @@
+select ROUND(SECONDS_BETWEEN(MAX(SYS_START_TIME) , CURRENT_TIMESTAMP) / 3600, 2) AS LAST_COMPLETED_LOG_BACKUP_IN_HOURS from SYS.M_BACKUP_CATALOG where state_name='successful' and entry_type_name='log backup'
