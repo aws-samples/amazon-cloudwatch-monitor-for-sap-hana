@@ -9,6 +9,7 @@ Please see our blog post [SAP HANA Monitoring: A serverless approach using Amazo
 ## Prerequisites
 
 - SAP HANA >= 1.0 SPS 12
+- SAP HANA Monitoring user and password - see "Setting it up -> Step 1"
 - Amazon VPC security group(s) allowing inbound/outbound traffic on port 3\<instanceID\>13 or 3\<instanceID\>15, so that the Lambda function can connect via the private subnet to the SAP HANA database to be monitored.
 - For Production systems, make sure to enable CloudWatch detailed monitoring according to [SAP note 1656250](https://launchpad.support.sap.com/#/notes/1656250).
 

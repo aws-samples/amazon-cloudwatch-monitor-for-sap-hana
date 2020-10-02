@@ -2,7 +2,7 @@
 
 ## Step 1: Create an SAP HANA User for Monitoring (HANA Studio)
 
-Please refer to the [step-by-step guide](Create_SAP_Monitoring_User.md).
+Please refer to the [user setup guide](Create_SAP_Monitoring_User.md).
 
 ## Step 2: Deploy the solution (console)
 
