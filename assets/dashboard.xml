@@ -106,7 +106,8 @@
             "height": 3,
             "properties": {
                 "metrics": [
-                    [ { "expression": "100-(m1*0+(1-AVG(CEIL(ABS(m1-1)/(MAX(m1+1))))))*100", "label": "%", "id": "e1" } ]
+                    [ { "expression": "100-(m1*0+(1-AVG(CEIL(ABS(m1-1)/(MAX(m1+1))))))*100", "label": "%", "id": "e1", "region": "eu-central-1" } ],
+                    [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-hana-HDB", { "id": "m1", "visible": false } ]
                 ],
                 "view": "singleValue",
                 "region": "eu-central-1",
@@ -125,6 +126,8 @@
             "height": 6,
             "properties": {
                 "metrics": [
+                    [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-hana-HDB", "Resource", "sap-monitor-hana-HDB", { "id": "errors", "color": "#d13212", "visible": false } ],
+                    [ ".", "Invocations", ".", ".", ".", ".", { "id": "invocations", "visible": false } ],
                     [ { "expression": "100 - 100 * errors / MAX([errors, invocations])", "label": "Success rate (%)", "id": "availability", "yAxis": "right", "region": "eu-central-1" } ],
                     [ "AWS/Lambda", "Duration", "FunctionName", "sap-monitor-hana-HDB", { "id": "m1", "yAxis": "left", "stat": "Average", "color": "#e377c2" } ]
                 ],
@@ -153,7 +156,9 @@
             "height": 6,
             "properties": {
                 "metrics": [
-                    [ "sap-monitor-hana", "CPU_PCT_INDEXSERVER", "bySID", "HDB" ]
+                    [ "sap-monitor-hana", "CPU_PCT_INDEXSERVER", "bySID", "HDB" ],
+                    [ ".", "SYSTEM_CPU_PCT_INDEXSERVER", ".", "." ],
+                    [ ".", "CPU_PCT", ".", "." ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
@@ -180,7 +185,13 @@
                 "metrics": [
                     [ { "expression": "m1 / m3 * 100", "label": "DATA", "id": "e1", "region": "eu-central-1" } ],
                     [ { "expression": "m4 / m2 * 100", "label": "LOG", "id": "e2", "region": "eu-central-1" } ],
+                    [ "sap-monitor-hana", "USED_SIZE_DATA_GB", "bySID", "HDB", { "id": "m1", "visible": false } ],
+                    [ ".", "TOTAL_SIZE_LOG_GB", ".", ".", { "id": "m2", "visible": false } ],
                     [ { "expression": "m5 / m6 * 100", "label": "TRACE", "id": "e3", "region": "eu-central-1" } ],
+                    [ "sap-monitor-hana", "TOTAL_SIZE_DATA_GB", "bySID", "HDB", { "id": "m3", "visible": false } ],
+                    [ ".", "USED_SIZE_LOG_GB", ".", ".", { "id": "m4", "visible": false } ],
+                    [ ".", "USED_SIZE_TRACE_GB", ".", ".", { "id": "m5", "visible": false } ],
+                    [ ".", "TOTAL_SIZE_TRACE_GB", ".", ".", { "id": "m6", "visible": false } ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
