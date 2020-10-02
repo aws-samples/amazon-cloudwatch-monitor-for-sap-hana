@@ -9,7 +9,7 @@ Please see our blog post [SAP HANA Monitoring: A serverless approach using Amazo
 ## Prerequisites
 
 - SAP HANA >= 1.0 SPS 12
-- Amazon VPC security group(s) allowing inbound/outbound traffic on port 3\<instanceID\>13 or 3\<instanceID\>15, so that the Lambda function can connect via the private subnet to the SAP HANA database to be monitored – see also previous section “Architecture.”
+- Amazon VPC security group(s) allowing inbound/outbound traffic on port 3\<instanceID\>13 or 3\<instanceID\>15, so that the Lambda function can connect via the private subnet to the SAP HANA database to be monitored.
 - For Production systems, make sure to enable CloudWatch detailed monitoring according to [SAP note 1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
 ## Setting it up
@@ -18,7 +18,7 @@ Please follow the [step-by-step guide](https://github.com/aws-samples/amazon-clo
 
 ## Architecture
 
-**Note:** You will have to deploy a single instance of this application per SAP HANA Instance! 
+**Note:** You will have to deploy a single instance of this application per SAP HANA DB! 
 
 ![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/assets/arch.png?raw=true)
 
@@ -39,6 +39,6 @@ The resulting dashboards can look as follows
 
 This solution is licensed under the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](.LICENSE).
 
-This solution requires the [SAP HANA Client for Node.js](https://www.npmjs.com/package/@sap/hana-client) from SAP SE.
+It requires the [SAP HANA Client for Node.js](https://www.npmjs.com/package/@sap/hana-client) from SAP SE.
   
 All rights reserved.
