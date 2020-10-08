@@ -17,7 +17,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['sap', 'monitoring', 'hana', 'cloudwatch']
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
-    SemanticVersion: 0.0.9
+    SemanticVersion: 0.1.0
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
   AWS::CloudFormation::Interface: 
     ParameterGroups: 
@@ -52,7 +52,7 @@ Parameters:
     Description: Provide Security Group(s) IDs, separate by comma
   SAPSIDParameter: 
     Type: String
-    Description: Provide SAP HANA System ID (used as namespace/identification only)
+    Description: Provide SAP HANA System ID (also used as namespace/identification)
     MinLength: 3
     MaxLength: 3
   SAPHostParameter: 
