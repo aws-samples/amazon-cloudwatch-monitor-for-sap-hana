@@ -4,7 +4,7 @@
 
 Please refer to the [user setup guide](Create_SAP_Monitoring_User.md).
 
-## Step 2: Deploy the solution (console)
+## Step 2: Deploy the solution (AWS console)
 
 For most AWS Regions, you can easily deploy the solution with the [AWS Serverless Application Repository](https://eu-central-1.console.aws.amazon.com/serverlessrepo/home?region=eu-central-1#/available-applications) by searching for **sap-monitor-hana**. Make sure to tick **Show apps that create custom IAM roles**.
 
@@ -20,7 +20,7 @@ Please carefully fill out all the necessary details, such as SAP System ID, Clie
 
 In case of issues, please refer to the [Troubleshooting](Troubleshooting.md) guide. 
 
-## Step 4: Test the function (console)
+## Step 4: Test the function
 
 Open the Lambda console, select **sap-monitor-hana-\<SID\>** and choose **Test**. In the **Configure test event** page, choose **Create new test event** and enter
 
@@ -36,13 +36,13 @@ Hit **Test**. The expected output is shown below:
 
 In case of issues, refer to the [Troubleshooting](Troubleshooting.md) guide.
 
-## Step 5: Enable the Scheduler (console)
+## Step 5: Enable the Scheduler
 
 Open the Amazon CloudWatch console. In the navigation pane, choose **Rules**. Select the rule **sap-monitor-hana-\<SID\>** and choose **Enable** as **Actions**, so that it runs periodically: 
 
 ![CWAlarm](../assets/scheduler.png)
 
-## Step 6: Create a dashboard (console)
+## Step 6: Create a dashboard
 
 Open the Amazon CloudWatch console. In the navigation pane, choose Metrics. Under Custom Namespaces, you should now find your custom metrics, arranged by SID. You can select any metric and preview its output.
 
