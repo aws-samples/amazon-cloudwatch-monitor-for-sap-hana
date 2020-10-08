@@ -1,6 +1,6 @@
 # Setting it up
 
-## Step 1: Create an SAP HANA User for Monitoring (HANA Studio)
+## Step 1: Create a SAP HANA User for Monitoring (HANA Studio)
 
 Please refer to the [user setup guide](Create_SAP_Monitoring_User.md).
 
@@ -22,7 +22,11 @@ In case of issues, please refer to the [Troubleshooting](Troubleshooting.md) gui
 
 ## Step 4: Test the function (console)
 
-Open the Lambda console, select **sap-monitor-hana\<SID\>** and choose **Test**. In the **Configure test event** page, choose **Create new test event** and enter *{“refresh”:true}*:
+Open the Lambda console, select **sap-monitor-hana-\<SID\>** and choose **Test**. In the **Configure test event** page, choose **Create new test event** and enter
+
+```json
+{"refresh":"true"}
+```
 
 ![CWAlarm](../assets/lambda0.png)
 
@@ -34,7 +38,7 @@ In case of issues, refer to the [Troubleshooting](Troubleshooting.md) guide.
 
 ## Step 5: Enable the Scheduler (console)
 
-Open the Amazon CloudWatch console. In the navigation pane, choose **Rules**. Select the rule **sap-monitor-hana\<SID\>** and choose **Enable** as **Actions**, so that it runs periodically: 
+Open the Amazon CloudWatch console. In the navigation pane, choose **Rules**. Select the rule **sap-monitor-hana-\<SID\>** and choose **Enable** as **Actions**, so that it runs periodically: 
 
 ![CWAlarm](../assets/scheduler.png)
 
