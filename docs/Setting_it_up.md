@@ -55,7 +55,7 @@ The resulting dashboards can look as follows
 ![Dashboard1](../assets/cw_dashboard1.png)
 ![Dashboard2](../assets/cw_dashboard2.png)
 
-A sample dashboard xml file can be found [here](../assets/dashboard.xml). You can import and adjust accordingly.
+A sample dashboard xml file can be found [here](../assets/dashboard.xml). When importing make sure to adjust region ('eu-central-1) and SID ('HDB') accordingly.
 
 By the way, if desired, CloudWatch even allows you to [embed graphs](https://aws.amazon.com/de/blogs/devops/building-an-amazon-cloudwatch-dashboard-outside-of-the-aws-management-console/) into your webpage.
 
