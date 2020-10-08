@@ -11,14 +11,14 @@ Metadata:
     Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor-hana/fc7c257951e6c4d7ad594824b05ccf21
-    ReadmeUrl: s3://sap-monitor-hana/45fcdb1ef89913a7c119ccfe396ea4f8
+    ReadmeUrl: s3://sap-monitor-hana/21a3864be89ca79c7b082bf5257b7230
     Labels:
     - sap
     - monitoring
     - hana
     - cloudwatch
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
-    SemanticVersion: 0.0.8
+    SemanticVersion: 0.0.9
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
   AWS::CloudFormation::Interface:
     ParameterGroups:
