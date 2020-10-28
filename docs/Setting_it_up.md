@@ -12,7 +12,7 @@ If this is not available in your Region, please deploy it manually by running th
 
 ![CWAlarm](../assets/sar.png)
 
-Please carefully fill out all the necessary details, such as SAP System ID, Client, Host/IP-Address, Instance ID, DB User/Password as well as Security Group(s) and Subnet(s) of your target VPC. Compare your inputs also with the respective EC2 settings for your SAP HANA system. 
+Please carefully fill out all the necessary details, such as SAP HANA ID, Host/IP-Address, Instance ID, DB User/Password as well as Security Group(s) and Subnet(s) of your target VPC. Compare your inputs also with the respective EC2 settings for your SAP HANA system. 
 
 **Note:** You will have to deploy a single instance of this application per SAP HANA ID, if multiple systems shall be monitored!
 
