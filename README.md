@@ -4,7 +4,7 @@
 
 Amazon CloudWatch Monitoring for SAP HANA powered by AWS Lambda.
 
-Please see our blog post [SAP HANA Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-monitoring-a-serverless-approach-using-amazon-hana/) for more info on the motivation and concept!
+Please see our blog post [SAP HANA Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-hana-monitoring-a-serverless-approach-using-amazon-cloudwatch/) for more info on the motivation and concept!
 
 ## Prerequisites
 
