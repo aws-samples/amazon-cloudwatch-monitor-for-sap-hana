@@ -1,0 +1,191 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: SAP HANA Monitoring sap-monitor-hana-<SID>
+Globals:
+  Function:
+    Timeout: 60
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: sap-monitor-hana
+    Description: Amazon CloudWatch Monitoring for SAP HANA based environments.
+    Author: mtoerpe
+    SpdxLicenseId: Apache-2.0
+    LicenseUrl: s3://sap-monitor-hana/fc7c257951e6c4d7ad594824b05ccf21
+    ReadmeUrl: s3://sap-monitor-hana/21a3864be89ca79c7b082bf5257b7230
+    Labels:
+    - sap
+    - monitoring
+    - hana
+    - cloudwatch
+    HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
+    SemanticVersion: 0.1.0
+    SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+    - Label:
+        default: Network Configuration
+      Parameters:
+      - SubnetParameter
+      - SecurityGroupParameter
+    - Label:
+        default: SAP Configuration
+      Parameters:
+      - SAPSIDParameter
+      - SAPHostParameter
+      - SAPInstanceIDParameter
+      - SAP0UserParameter
+      - SAP1PasswordParameter
+    ParameterLabels:
+      SubnetParameter:
+        default: Which VPC Subnet(s) should this be deployed to?
+      SecurityGroupParameter:
+        default: Which Security Groups should be applied?
+Parameters:
+  SubnetParameter:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: Provide Subnet(s) IDs, separate by comma
+  SecurityGroupParameter:
+    Type: List<AWS::EC2::SecurityGroup::Id>
+    Description: Provide Security Group(s) IDs, separate by comma
+  SAPSIDParameter:
+    Type: String
+    Description: Provide SAP HANA System ID (also used as namespace/identification)
+    MinLength: 3
+    MaxLength: 3
+  SAPHostParameter:
+    Type: String
+    Description: Provide Hostname/IP-Address of HANA Server
+  SAPInstanceIDParameter:
+    Type: String
+    Description: Provide SAP HANA Instance Number
+    MinLength: 2
+    MaxLength: 2
+  SAP0UserParameter:
+    Type: String
+    Description: Provide User
+  SAP1PasswordParameter:
+    Type: String
+    Description: Provide Password
+    NoEcho: true
+Resources:
+  SecretsManager:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name:
+        Fn::Sub:
+        - sap-monitor-hana-${SID}
+        - SID:
+            Ref: SAPSIDParameter
+      Description:
+        Fn::Sub:
+        - Secret for SAP Monitoring for HANA <${SID}>
+        - SID:
+            Ref: SAPSIDParameter
+      SecretString:
+        Fn::Sub:
+        - '{ "name":"${SID}", "host":"${HOST}", "sys_id":"${INSTANCEID}", "user":"${USER}",
+          "password": "${PASSWORD}" }'
+        - SID:
+            Ref: SAPSIDParameter
+          HOST:
+            Ref: SAPHostParameter
+          INSTANCEID:
+            Ref: SAPInstanceIDParameter
+          USER:
+            Ref: SAP0UserParameter
+          PASSWORD:
+            Ref: SAP1PasswordParameter
+      Tags:
+      - Key: AppName
+        Value: SAPMONITORHANA
+  ScheduledRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name:
+        Fn::Sub:
+        - sap-monitor-hana-${SID}
+        - SID:
+            Ref: SAPSIDParameter
+      Description:
+        Fn::Sub:
+        - Scheduler for SAP Monitoring for HANA <${SID}>
+        - SID:
+            Ref: SAPSIDParameter
+      ScheduleExpression: rate(1 minute)
+      State: DISABLED
+      Targets:
+      - Arn:
+          Fn::GetAtt:
+          - CWLambdaFunction
+          - Arn
+        Id: latest
+  PermissionForEventsToInvokeLambda:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName:
+        Fn::GetAtt:
+        - CWLambdaFunction
+        - Arn
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn:
+        Fn::GetAtt:
+        - ScheduledRule
+        - Arn
+  CWLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://sap-monitor-hana/551b9a531b689ed3214bd72090a1c9bd
+      FunctionName:
+        Fn::Sub:
+        - sap-monitor-hana-${SID}
+        - SID:
+            Ref: SAPSIDParameter
+      Description:
+        Fn::Sub:
+        - SAP Monitoring for HANA <${SID}>
+        - SID:
+            Ref: SAPSIDParameter
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      MemorySize: 512
+      Timeout: 30
+      VpcConfig:
+        SecurityGroupIds:
+          Ref: SecurityGroupParameter
+        SubnetIds:
+          Ref: SubnetParameter
+      Environment:
+        Variables:
+          SECRET:
+            Fn::Sub:
+            - sap-monitor-hana-${SID}
+            - SID:
+                Ref: SAPSIDParameter
+      Policies:
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - secretsmanager:GetSecretValue
+          Resource:
+            Ref: SecretsManager
+        - Effect: Allow
+          Action:
+          - cloudwatch:PutMetricData
+          Resource: '*'
+      Tags:
+        AppName: SAPMONITORHANA
+Outputs:
+  CWLambdaFunction:
+    Description: Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - CWLambdaFunction
+      - Arn
+  CWLambdaFunctionIamRole:
+    Description: Implicit IAM Role created for function
+    Value:
+      Fn::GetAtt:
+      - CWLambdaFunctionRole
+      - Arn
