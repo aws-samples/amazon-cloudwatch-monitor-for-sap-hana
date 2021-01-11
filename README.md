@@ -12,7 +12,7 @@ Please see our blog post [SAP HANA Monitoring: A serverless approach using Amazo
 - SAP HANA Monitoring user and password - see "Setting it up -> Step 1"
 - Amazon VPC security group(s) allowing inbound/outbound traffic - see also section “Architecture”:
   - Lambda + SAP HANA@EC2: 3\<instanceID\>13 and 3\<instanceID\>15, so that the Lambda function can connect via the private subnet to the SAP HANA system to be monitored
-  - Lambda: Additionally port 443 to call AWS Secrets Manager and CloudWatch APIs. In case of a private subnet without NAT Gateway make sure to create respective private endpoints!
+  - Lambda: Additionally port 443 to call AWS Secrets Manager and CloudWatch APIs. In case of a private subnet without NAT Gateway make sure to create respective [private endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html)!
 - For Production systems, make sure to enable CloudWatch detailed monitoring according to [SAP note 1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
 ## Setting it up
