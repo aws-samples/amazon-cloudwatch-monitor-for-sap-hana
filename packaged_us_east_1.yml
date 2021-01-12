@@ -135,7 +135,7 @@ Resources:
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor-hana/551b9a531b689ed3214bd72090a1c9bd
+      CodeUri: s3://sap-monitor-hana-us-east-1/551b9a531b689ed3214bd72090a1c9bd
       FunctionName:
         Fn::Sub:
         - sap-monitor-hana-${SID}

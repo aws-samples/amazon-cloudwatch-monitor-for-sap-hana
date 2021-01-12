@@ -8,7 +8,10 @@ Please refer to the [user setup guide](Create_SAP_Monitoring_User.md).
 
 For most AWS Regions, you can easily deploy the solution with the [AWS Serverless Application Repository](https://eu-central-1.console.aws.amazon.com/serverlessrepo/home?region=eu-central-1#/available-applications) by searching for **sap-monitor-hana**. Make sure to tick **Show apps that create custom IAM roles**.
 
-If this is not available in your Region, please deploy it manually by running the following AWS CloudFormation [template](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/packaged.yml).
+If this is not available in your Region, please deploy it manually by running the following AWS CloudFormation templates
+- [Frankfurt (eu-central-1)](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/packaged.yml)
+- [North Virginia (us-east-1)](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/packaged_us_east_1.yml)
+- [Oregon (us-west-2)](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/packaged_us_west_2.yml)
 
 ![CWAlarm](../assets/sar.png)
 
