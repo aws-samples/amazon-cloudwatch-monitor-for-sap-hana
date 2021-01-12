@@ -6,6 +6,7 @@ let connection = require('./connect.js');
 let utils = require('./utils.js');
 let dp_sql = require('./dataprovider_sql.js');
 
+//MAIN
 exports.lambdaHandler = async (event, context) => {
 
     myconfig = new config();

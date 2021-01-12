@@ -7,11 +7,11 @@ Globals:
 Metadata:
   AWS::ServerlessRepo::Application:
     Name: sap-monitor-hana
-    Description: Amazon CloudWatch Monitoring for SAP HANA based environments.
+    Description: Amazon CloudWatch Monitoring for SAP HANA based environments
     Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor-hana/fc7c257951e6c4d7ad594824b05ccf21
-    ReadmeUrl: s3://sap-monitor-hana/21a3864be89ca79c7b082bf5257b7230
+    ReadmeUrl: s3://sap-monitor-hana/d3ac4d7d89ef4b323c7bcabebc181563
     Labels:
     - sap
     - monitoring
@@ -135,7 +135,7 @@ Resources:
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor-hana/551b9a531b689ed3214bd72090a1c9bd
+      CodeUri: s3://sap-monitor-hana/c0c6b875c9a83bc5ae65e0a2628ed036
       FunctionName:
         Fn::Sub:
         - sap-monitor-hana-${SID}
