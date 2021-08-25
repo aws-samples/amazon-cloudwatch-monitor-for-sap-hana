@@ -18,6 +18,7 @@ class Config {
     databaseName = "";
     user = "";
     password = "";
+    secureConnection = false;
 
     constructor(resolve) {
       if (Config.instance) {
@@ -32,6 +33,8 @@ class Config {
         this.databaseName = "";
         this.user = "";
         this.password = "";
+
+        this.secureConnection = false;
 
         this.secret_key = "";
         this.debug = false;
@@ -96,6 +99,9 @@ class Config {
                         that.databaseName = secret.name;
                         that.user = secret.user;
                         that.password = secret.password;
+
+                        if(secret.secureConnection)
+                        that.secureConnection = secret.secureConnection;
 
                         resolve();
                     });

@@ -25,15 +25,31 @@ class Connection {
     return new Promise(function(resolve, reject) {
 
       if(!that.connected) {
-        console.log("Establishing SAP HANA connection to "+that.config.host+" as "+ that.config.user +"...");
 
-        that.client = hdb.createClient({
+        if(that.config.secureConnection)
+        {
+          console.log("Establishing !secure! SAP HANA connection to "+that.config.host+" as "+ that.config.user +"...");
+          that.client = hdb.createClient({
+            host           : that.config.host, // system database host
+            instanceNumber : that.config.instanceNumber,       // instance number of the HANA system
+            databaseName   : that.config.databaseName,      // name of a particular tenant database
+            user           : that.config.user,     // user for the tenant database
+            password       : that.config.password,    // password for the user specified
+            encrypt: 'true',
+            sslValidateCertificate: 'false'
+          });
+        }
+        else
+        {
+          console.log("Establishing SAP HANA connection to "+that.config.host+" as "+ that.config.user +"...");
+          that.client = hdb.createClient({
             host           : that.config.host, // system database host
             instanceNumber : that.config.instanceNumber,       // instance number of the HANA system
             databaseName   : that.config.databaseName,      // name of a particular tenant database
             user           : that.config.user,     // user for the tenant database
             password       : that.config.password    // password for the user specified
-        });
+          });
+        }
 
         that.client.connect(function (err) {
           if (err) {

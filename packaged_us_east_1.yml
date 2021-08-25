@@ -18,7 +18,7 @@ Metadata:
     - hana
     - cloudwatch
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
-    SemanticVersion: 0.1.0
+    SemanticVersion: 0.1.1
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -135,7 +135,7 @@ Resources:
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor-hana-us-east-1/c0c6b875c9a83bc5ae65e0a2628ed036
+      CodeUri: s3://sap-monitor-hana-us-east-1/b5a127307ad0d05240889a624d9b9daa
       FunctionName:
         Fn::Sub:
         - sap-monitor-hana-${SID}

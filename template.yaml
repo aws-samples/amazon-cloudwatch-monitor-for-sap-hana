@@ -17,7 +17,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['sap', 'monitoring', 'hana', 'cloudwatch']
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
-    SemanticVersion: 0.1.0
+    SemanticVersion: 0.1.1
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
   AWS::CloudFormation::Interface: 
     ParameterGroups: 
