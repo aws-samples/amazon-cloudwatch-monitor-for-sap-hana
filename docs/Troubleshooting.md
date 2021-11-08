@@ -23,9 +23,3 @@ Make sure to also check your connectiviy, as per prerequisites:
 ### Authentication failed
 
 In case of "authentication failed SQLSTATE: 28000" (e.g. single tenant), modify the database name in AWS Secrets Manager to "SYSTEMDB" instead of HANA SID.
-
-### Password expires
-
-Disable password lifetime by running the following SQL
-
-> ALTER USER SAPMONITOR DISABLE PASSWORD LIFETIME;
