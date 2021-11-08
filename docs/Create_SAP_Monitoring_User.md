@@ -7,4 +7,8 @@ Add the role 'MONITORING', specify a password and save.
 
 ![CWAlarm](../assets/user.png)
 
+(Optional) To avoid password expiration, you can disable the lifetime by running the following SQL
+
+> ALTER USER SAPMONITOR DISABLE PASSWORD LIFETIME;
+
 You are all set!
