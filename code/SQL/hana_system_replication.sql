@@ -1,1 +1,1 @@
-select top 1 (case when replication_status = 'active' then 1 when replication_status = 'error' then -1 else 0 end) AS REPL_STATUS from SYS.m_service_replication
+select top 1 (case when lower(replication_status) = 'active' then 1 when lower(replication_status) = 'error' then -1 else 0 end) AS REPL_STATUS from SYS.m_service_replication;

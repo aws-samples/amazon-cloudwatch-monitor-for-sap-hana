@@ -70,6 +70,7 @@ exports.lambdaHandler = async (event, context) => {
                         console.log('Total SQL Execution time: %dms', end);
 
                         var myutils = new utils();
+                        
                         myutils.submit().then(function() {
                             resolve();
                         });
