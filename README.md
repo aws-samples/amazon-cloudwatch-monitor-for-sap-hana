@@ -40,6 +40,13 @@ The resulting dashboards can look as follows
 - [Collected Metrics](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/docs/Metrics.md)  
 - [Troubleshooting](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/docs/Troubleshooting.md)  
 
+## Changelog
+
+0.1.4
+
+- Upgrade to Node16
+- Upgrade to SAP HANA Client [2.13.22](https://launchpad.support.sap.com/#/notes/3210156)
+
 ## License
 
 This solution is licensed under the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](.LICENSE).

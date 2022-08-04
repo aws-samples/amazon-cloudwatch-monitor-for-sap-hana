@@ -11,14 +11,14 @@ Metadata:
     Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor-hana/fc7c257951e6c4d7ad594824b05ccf21
-    ReadmeUrl: s3://sap-monitor-hana/02c7fe822edd96ec9e9fa7c0bab0c525
+    ReadmeUrl: s3://sap-monitor-hana/8837bee9451d54edbfb9a419a043921a
     Labels:
     - sap
     - monitoring
     - hana
     - cloudwatch
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
-    SemanticVersion: '0.1.2'
+    SemanticVersion: '0.1.4'
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -98,6 +98,8 @@ Resources:
       Tags:
       - Key: AppName
         Value: SAPMONITORHANA
+    Metadata:
+      SamResourceId: SecretsManager
   ScheduledRule:
     Type: AWS::Events::Rule
     Properties:
@@ -119,6 +121,8 @@ Resources:
           - CWLambdaFunction
           - Arn
         Id: latest
+    Metadata:
+      SamResourceId: ScheduledRule
   PermissionForEventsToInvokeLambda:
     Type: AWS::Lambda::Permission
     Properties:
@@ -132,10 +136,12 @@ Resources:
         Fn::GetAtt:
         - ScheduledRule
         - Arn
+    Metadata:
+      SamResourceId: PermissionForEventsToInvokeLambda
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor-hana/0fc93665dd3ee6365856020e8ee66cd0
+      CodeUri: s3://sap-monitor-hana/8e2ab339e86984f25a4095bfb11fcb39
       FunctionName:
         Fn::Sub:
         - sap-monitor-hana-${SID}
@@ -147,7 +153,7 @@ Resources:
         - SID:
             Ref: SAPSIDParameter
       Handler: app.lambdaHandler
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       MemorySize: 512
       Timeout: 30
       VpcConfig:
@@ -176,6 +182,8 @@ Resources:
           Resource: '*'
       Tags:
         AppName: SAPMONITORHANA
+    Metadata:
+      SamResourceId: CWLambdaFunction
 Outputs:
   CWLambdaFunction:
     Description: Lambda Function ARN
