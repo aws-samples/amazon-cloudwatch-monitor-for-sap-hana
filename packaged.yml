@@ -11,14 +11,14 @@ Metadata:
     Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor-hana/fc7c257951e6c4d7ad594824b05ccf21
-    ReadmeUrl: s3://sap-monitor-hana/d3cd05c1971ae19f32f8ab2fa884eec0
+    ReadmeUrl: s3://sap-monitor-hana/adc6cfce4bb3f507f27598e5c3582f0e
     Labels:
     - sap
     - monitoring
     - hana
     - cloudwatch
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
-    SemanticVersion: '0.1.5'
+    SemanticVersion: '0.1.6'
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -156,6 +156,8 @@ Resources:
       Runtime: nodejs20.x
       MemorySize: 512
       Timeout: 30
+      Architectures:
+      - arm64
       VpcConfig:
         SecurityGroupIds:
           Ref: SecurityGroupParameter

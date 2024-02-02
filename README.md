@@ -17,9 +17,22 @@ Please see our blog post [SAP HANA Monitoring: A serverless approach using Amazo
   - Lambda: Additionally port 443 to call AWS Secrets Manager and CloudWatch APIs. In case of a private subnet without NAT Gateway make sure to create respective [private endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html)!
 - For Production systems, make sure to enable CloudWatch detailed monitoring according to [SAP note 1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
-## Setting it up
+## Initial setup
 
 Please follow the [step-by-step guide](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/docs/Setting_it_up.md).
+
+## Update to latest version
+
+If you have deployed an older version of this solution already via **AWS Serverless Application Repository**, you can simply update the stack to the latest version as follows:
+
+- Launch an [AWS CloudShell](https://console.aws.amazon.com/cloudshell/home) instance
+- Execute the following statements - creates ChangeSet but keeps parameters **unchanged**, except password:
+
+```bash
+wget https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/raw/master/update.sh
+chmod +x update.sh
+./update.sh
+```
 
 ## Architecture
 
@@ -41,6 +54,10 @@ The resulting dashboards can look as follows
 - [Troubleshooting](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana/blob/master/docs/Troubleshooting.md)  
 
 ## Changelog
+
+0.1.6
+
+- ARM64 (!)
 
 0.1.5
 
