@@ -44,6 +44,7 @@ class Utils {
               if(this.config.debug)
               console.log(key + ": "+value);
               
+              if(key != "VERSION")
               metrics.putMetric(key, value, Unit.None);
           }
           //metrics.putMetric("PING", this.ping, Unit.None);

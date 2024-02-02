@@ -7,15 +7,16 @@
   "author": "Marcel Toerpe",
   "license": "Apache 2.0",
   "dependencies": {
-    "@sap/hana-client": "^2.13.22",
-    "aws-embedded-metrics": "^1.1.1",
-    "debug": "^4.1.1"
+    "@sap/hana-client": "^2.19.21",
+    "aws-embedded-metrics": "^4.1.1",
+    "@aws-sdk/client-secrets-manager": "^3.504.0",
+    "debug": "^4.3.4"
   },
   "scripts": {
     "test": "mocha tests/unit/"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "chai": "^5.0.3",
+    "mocha": "^10.2.0"
   }
 }

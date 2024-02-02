@@ -17,7 +17,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['sap', 'monitoring', 'hana', 'cloudwatch']
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
-    SemanticVersion: 0.1.4
+    SemanticVersion: 0.1.5
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-hana
   AWS::CloudFormation::Interface: 
     ParameterGroups: 
@@ -142,7 +142,7 @@ Resources:
           - SAP Monitoring for HANA <${SID}>
           - { SID: !Ref SAPSIDParameter }
       Handler: app.lambdaHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs20.x
       MemorySize: 512
       Timeout: 30
       VpcConfig:

@@ -42,6 +42,12 @@ The resulting dashboards can look as follows
 
 ## Changelog
 
+0.1.5
+
+- AWS SDK for JavaScript v3
+- Upgrade to Node20
+- Upgrade to SAP HANA Client [2.19.21](https://launchpad.support.sap.com/#/notes/3210156)
+
 0.1.4
 
 - Upgrade to Node16

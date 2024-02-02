@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-var AWS = require('aws-sdk');
+var AWS = require('@aws-sdk/client-secrets-manager');
 
 class Config {
 
