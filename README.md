@@ -1,12 +1,8 @@
 # Overview
 
-![badge](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQXd4MS94UTE2ZEZPQzNndnJ0b3ZyVFY2czZodFcvemlFVFVJWlliZzA1c2ZiMlRwbUlRZ0NZOStBR1h5R1grYTJQWmk1WE5RN3g2ZlNLaWNHanAxZW4wPSIsIml2UGFyYW1ldGVyU3BlYyI6Ii9hQURXWVFHbUU2aEphNTEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
-
 Amazon CloudWatch Monitoring for SAP HANA powered by AWS Lambda.
 
 Please see our blog post [SAP HANA Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-hana-monitoring-a-serverless-approach-using-amazon-cloudwatch/) for more info on the motivation and concept!
-
-> :mega: Update 12/2021: If you prefer a **fully supported & agent-based solution** instead, kindly checkout the new [Amazon CloudWatch Application Insights for SAP HANA](https://aws.amazon.com/de/blogs/awsforsap/sap-hana-observability-with-amazon-cloudwatch-application-insights/)!
 
 ## Prerequisites
 
